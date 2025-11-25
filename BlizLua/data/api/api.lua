@@ -4,6 +4,7 @@ bliz.gl = {}
 bliz.al = {}
 bliz.file = {}
 bliz.net = {}
+bliz.math = {}
 
 XPLM_NAV_NOT_FOUND = -1
 
@@ -563,6 +564,144 @@ function bliz.gl.DrawRotatedTexture(id, x, y, width, height, deg, anchorX, ancho
     DrawRotatedTexture(id, x, y, width, height, deg, anchorX, anchorY, texID)
 end
 
+---@param start integer
+---@param ending integer
+---@param color table
+function bliz.gl.EnableFog(start, ending, color)
+    EnableFog(start, ending, color)
+end
+
+function bliz.gl.DisableFog()
+    DisableFog()
+end
+
+function bliz.gl.EnableDepth()
+    EnableDepth()
+end
+
+function bliz.gl.DisableDepth()
+    DisableDepth()
+end
+
+---@param clearValue number
+function bliz.gl.ClearDepth(clearValue)
+    ClearDepth(clearValue)
+end
+
+---@param id integer
+---@param src integer
+---@param dst integer
+function bliz.gl.SetBlendMode(id, src, dst)
+    SetBlendMode(id, src, dst)
+end
+
+function bliz.gl.PushMatrix()
+    PushMatrix()
+end
+
+function bliz.gl.PopMatrix()
+    PopMatrix()
+end
+
+---@param x number
+---@param y number
+---@param z number
+function bliz.gl.Translate(x, y, z)
+    Translate(x, y, z)
+end
+
+---@param angle number
+---@param x number
+---@param y number
+---@param z number
+function bliz.gl.Rotate(angle, x, y, z)
+    Rotate(angle, x, y, z)
+end
+
+---@param x number
+---@param y number
+---@param z number
+function bliz.gl.Scale(x, y, z)
+    Scale(x, y, z)
+end
+
+---@param winID integer
+---@param x integer
+---@param y integer
+---@param width integer
+---@param height integer
+---@param argHandle integer
+function bliz.gl.BeginRenderTarget(winID, x, y, width, height, argHandle)
+    BeginRenderTarget(winID, x, y, width, height, argHandle)
+end
+
+function bliz.gl.EndRenderTarget()
+    EndRenderTarget()
+end
+
+---@param id integer
+function bliz.gl.GetRenderTexture(id)
+    GetRenderTexture(id)
+end
+
+---@param winID integer
+---@param x number
+---@param y number
+---@param width number
+---@param height number
+---@param topColor table
+---@param bottomColor table
+function bliz.gl.DrawVerticalGradient(winID, x, y, width, height, topColor, bottomColor)
+    DrawVerticalGradient(winID, x, y, width, height, topColor, bottomColor)
+end
+
+---@param winID integer
+---@param x number
+---@param y number
+---@param width number
+---@param height number
+---@param leftColor table
+---@param rightColor table
+function bliz.gl.DrawHorizontalGradient(winID, x, y, width, height, leftColor, rightColor)
+    DrawHorizontalGradient(winID, x, y, width, height, leftColor, rightColor)
+end
+
+---@param vertexSrc string
+---@param fragmentSrc string
+function bliz.gl.LoadShader(vertexSrc, fragmentSrc)
+    LoadShader(vertexSrc, fragmentSrc)
+end
+
+---@param handle integer
+function bliz.gl.UseShader(handle)
+    UseShader(handle)
+end
+
+---@param handle integer
+---@param name string
+---@param value number|table
+function bliz.gl.SetShaderUniform(handle, name, value)
+    SetShaderUniform(handle, name, value)
+end
+
+---@param mode integer
+function bliz.gl.EnableCull(mode)
+    EnableCull(mode)
+end
+
+function bliz.gl.DisableCull()
+    DisableCull()
+end
+
+function bliz.gl.EnableWireframe()
+    EnableWireframe()
+end
+
+function bliz.gl.DisableWireframe()
+    DisableWireframe()
+end
+
+
 ---@param path_acf string
 function bliz.SetUsersAircraft(path_acf)
     SetUsersAircraft(path_acf)
@@ -974,10 +1113,6 @@ end
 function bliz.ClearFMSFlightPlanEntry(i, index)
     ClearFMSFlightPlanEntry(i, index)
 end
-
--- ##############################
--- #       GPS Functions        #
--- ##############################
 
 --- Loads an FMS flight plan from a buffer.
 ---@param device number The device index.
@@ -1415,4 +1550,344 @@ end
 --- @return boolean success
 function bliz.al.SetPlaybackOffset(id, offset)
     return SetPlaybackOffset(id, offset)
+end
+
+--- @param x number
+--- @param y number
+--- @param width number
+--- @param height number
+--- @param mousePath string
+--- @param func function
+function bliz.CreateOwnManip(x, y, width, height, mousePath, func)
+    return CreateOwnManip(x, y, width, height, mousePath, func)
+end
+
+--- @param value number
+--- @param shift number
+function bliz.ShiftLeft(value, shift)
+    return ShiftLeft(value, shift)
+end
+
+--- @param value number
+--- @param shift number
+function bliz.ShiftRight(value, shift)
+    return ShiftRight(name, mode)
+end
+
+--- @param a number
+--- @param b number
+function bliz.BitAnd(a, b)
+    return BitAnd(a, b)
+end
+
+--- @param a number
+--- @param b number
+function bliz.BitOr(a, b)
+    return BitOr(a, b)
+end
+
+--- @param a number
+--- @param b number
+function bliz.BitXor(a, b)
+    return BitXor(a, b)
+end
+
+--- @param a number
+--- @param b number
+function bliz.BitNot(a, b)
+    return BitNot(a, b)
+end
+
+---@param val number
+---@param minVal number
+---@param maxVal number
+---@return number
+function bliz.math.clamp(val, minVal, maxVal)
+    return clamp(val, minVal, maxVal)
+end
+
+---@param a number
+---@param b number
+---@param t number
+---@return number
+function bliz.math.lerp(a, b, t)
+    return lerp(a, b, t)
+end
+
+---@param a number
+---@param b number
+---@param v number
+---@return number
+function bliz.math.inverseLerp(a, b, v)
+    return InverseLerp(a, b, v)
+end
+
+---@param v number
+---@param iMin number
+---@param iMax number
+---@param oMin number
+---@param oMax number
+---@return number
+function bliz.math.remap(v, iMin, iMax, oMin, oMax)
+    return remap(v, iMin, iMax, oMin, oMax)
+end
+
+---@param v number
+---@param min number
+---@param max number
+---@return number
+function bliz.math.wrap(v, min, max)
+    return wrap(v, min, max)
+end
+
+---@param v number
+---@return number
+function bliz.math.sign(v)
+    return sign(v)
+end
+
+---@param x number
+---@param y number
+---@return number
+function bliz.math.vec2Length(x, y)
+    return vec2Length(x, y)
+end
+
+---@param x number
+---@param y number
+---@param z number
+---@return number
+function bliz.math.vec3Length(x, y, z)
+    return vec3Length(x, y, z)
+end
+
+---@param x number
+---@param y number
+---@return number, number
+function bliz.math.vec2Normalize(x, y)
+    return vec2Normalize(x, y)
+end
+
+---@param x number
+---@param y number
+---@param z number
+---@return number, number, number
+function bliz.math.vec3Normalize(x, y, z)
+    return vec3Normalize(x, y, z)
+end
+
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@return number
+function bliz.math.vec2Dot(x1, y1, x2, y2)
+    return vec2Dot(x1, y1, x2, y2)
+end
+
+---@param x1 number
+---@param y1 number
+---@param z1 number
+---@param x2 number
+---@param y2 number
+---@param z2 number
+---@return number
+function bliz.math.vec3Dot(x1, y1, z1, x2, y2, z2)
+    return vec3Dot(x1, y1, z1, x2, y2, z2)
+end
+
+---@param x1 number
+---@param y1 number
+---@param z1 number
+---@param x2 number
+---@param y2 number
+---@param z2 number
+---@return number, number, number
+function bliz.math.vec3Cross(x1, y1, z1, x2, y2, z2)
+    return vec3Cross(x1, y1, z1, x2, y2, z2)
+end
+
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@return number
+function bliz.math.vec2Angle(x1, y1, x2, y2)
+    return vec2Angle(x1, y1, x2, y2)
+end
+
+---@param x1 number
+---@param y1 number
+---@param z1 number
+---@param x2 number
+---@param y2 number
+---@param z2 number
+---@return number
+function bliz.math.vec3Angle(x1, y1, z1, x2, y2, z2)
+    return vec3Angle(x1, y1, z1, x2, y2, z2)
+end
+
+---@param x1 number
+---@param y1 number
+---@param z1 number
+---@param x2 number
+---@param y2 number
+---@param z2 number
+---@return number, number, number
+function bliz.math.vec3Project(x1, y1, z1, x2, y2, z2)
+    return vec3Project(x1, y1, z1, x2, y2, z2)
+end
+
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@return number
+function bliz.math.distance2D(x1, y1, x2, y2)
+    return distance2D(x1, y1, x2, y2)
+end
+
+---@param x1 number
+---@param y1 number
+---@param z1 number
+---@param x2 number
+---@param y2 number
+---@param z2 number
+---@return number
+function bliz.math.distance3D(x1, y1, z1, x2, y2, z2)
+    return distance3D(x1, y1, z1, x2, y2, z2)
+end
+
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@return number, number
+function bliz.math.midpoint(x1, y1, x2, y2)
+    return midpoint(x1, y1, x2, y2)
+end
+
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@param x3 number
+---@param y3 number
+---@param x4 number
+---@param y4 number
+---@return number, number
+function bliz.math.lineIntersection2D(x1, y1, x2, y2, x3, y3, x4, y4)
+    return lineIntersection2D(x1, y1, x2, y2, x3, y3, x4, y4)
+end
+
+---@param px number
+---@param py number
+---@param ax number
+---@param ay number
+---@param bx number
+---@param by number
+---@param cx number
+---@param cy number
+---@return boolean, number, number, number
+function bliz.math.pointInTriangle(px, py, ax, ay, bx, by, cx, cy)
+    return pointInTriangle(px, py, ax, ay, bx, by, cx, cy)
+end
+
+---@param x number
+---@param y number
+---@param originX number
+---@param originY number
+---@param angleDeg number
+---@return number, number
+function bliz.math.rotatePoint(x, y, originX, originY, angleDeg)
+    return rotatePoint(x, y, originX, originY, angleDeg)
+end
+
+---@param hdg number
+---@return number, number
+function bliz.math.headingToVector(hdg)
+    return headingToVector(hdg)
+end
+
+---@param x number
+---@param y number
+---@return number
+function bliz.math.vectorToHeading(x, y)
+    return vectorToHeading(x, y)
+end
+
+---@param headingDeg number
+---@return number
+function bliz.math.normalizeHeading(headingDeg)
+    return normalizeHeading(headingDeg)
+end
+
+---@param h1 number
+---@param h2 number
+---@return number
+function bliz.math.headingDifference(h1, h2)
+    return headingDifference(h1, h2)
+end
+
+---@param lat1 number
+---@param lon1 number
+---@param lat2 number
+---@param lon2 number
+---@return number
+function bliz.math.latLonBearing(lat1, lon1, lat2, lon2)
+    return latLonBearing(lat1, lon1, lat2, lon2)
+end
+
+---@param lat number
+---@param lon number
+---@param bearing number
+---@param distance number
+---@return number, number
+function bliz.math.moveLatLon(lat, lon, bearing, distance)
+    return moveLatLon(lat, lon, bearing, distance)
+end
+
+---@param V number
+---@param altitude number
+---@return number
+function bliz.math.airspeedToMach(V, altitude)
+    return airspeedToMach(V, altitude)
+end
+
+---@param M number
+---@param altitude number
+---@return number
+function bliz.math.machToAirspeed(M, altitude)
+    return machToAirspeed(M, altitude)
+end
+
+---@param feet number
+---@return number
+function bliz.math.feetToMeters(feet)
+    return feetToMeters(feet)
+end
+
+---@param meters number
+---@return number
+function bliz.math.metersToFeet(meters)
+    return metersToFeet(meters)
+end
+
+---@param kn number
+---@return number
+function bliz.math.knotsToMps(kn)
+    return knotsToMps(kn)
+end
+
+---@param mps number
+---@return number
+function bliz.math.mpsToKnots(mps)
+    return mpsToKnots(mps)
+end
+
+
+---@param name string
+---@param mode number
+function bliz.FailSystem(name, mode)
+    FailSystem(name, mode)
 end
