@@ -205,6 +205,13 @@ XPLM_PROBEMISSED = 2
 DECORATION_NONE = 0
 DECORATION_RECTANGLE = 1
 
+XPLM_PHASE_MODERN3D = 31
+XPLM_PHASE_FIRSTCOCKPIT = 35
+XPLM_PHASE_PANEL = 40
+XPLM_PHASE_GAUGES = 45
+XPLM_PHASE_WINDOW = 50
+XPLM_PHASE_LASTCOCKPIT = 55
+
 local zones = {}
 
 function bliz.Library(name)
@@ -258,6 +265,11 @@ end
 ---@param params table
 function bliz.CreateXPWindow(params)
     return CreateXPWindow(params)
+end
+
+---@param params table
+function bliz.CreateImGuiWindow(params)
+    return CreateImGuiWindow(params)
 end
 
 ---@return string
@@ -346,29 +358,27 @@ function bliz.gl.LoadFont(...)
     return LoadFont(...)
 end
 
----@param id integer
 ---@param text string
----@param x integer
----@param y integer
+---@param x number
+---@param y number
 ---@param color table
-function bliz.DrawXpText(id, text, x, y, color)
-    DrawXpText(id, text, x, y, color)
+function bliz.DrawXpText(text, x, y, color)
+    DrawXpText(text, x, y, color)
 end
 
 ALIGN_LEFT = 0
 ALIGN_CENTER = 1
 ALIGN_RIGHT = 2
 
----@param id integer
 ---@param text string
----@param x integer
----@param y integer
----@param size integer
+---@param x number
+---@param y number
+---@param size number
 ---@param align integer
 ---@param color table
 ---@param id_font font
-function bliz.gl.DrawCustomText(id, text, x, y, size, align, color, id_font)
-    DrawCustomText(id, text, x, y, size, align, color, id_font)
+function bliz.gl.DrawCustomText(text, x, y, size, align, color, id_font)
+    DrawCustomText(text, x, y, size, align, color, id_font)
 end
 
 
@@ -377,137 +387,125 @@ function bliz.gl.TestFont(id_font)
     TestFont(id_font)
 end
 
----@param id integer
 ---@param text string
----@param x integer
----@param y integer
----@param width integer
----@param heigh table
----@param color boolean
-function bliz.gl.DrawRectangle(id, x, y, width, heigh, isFilled, lineWidth, color)
+---@param x number
+---@param y number
+---@param width number
+---@param height number
+---@param isFilled integer
+---@param color table
+function bliz.gl.DrawRectangle(x, y, width, height, isFilled, lineWidth, color)
+    DrawRectangle(x, y, width, height, isFilled, lineWidth, color)
+end
+
+
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@param x3 number
+---@param y3 number
+---@param x4 number
+---@param y4 number
+---@param color table
+function bliz.gl.DrawCustomQuad(x1, y1, x2, y2, x3, y3, x4, y4, isFilled, lineWidth, color)
     local f
     if(isFilled) then f = 1 else f = 0 end
-    DrawRectangle(id, x, y, width, heigh, f, lineWidth, color)
+    DrawCustomQuad(x1, y1, x2, y2, x3, y3, x4, y4, f, lineWidth, color)
 end
 
-
----@param id integer
----@param x1 integer
----@param y1 integer
----@param x2 integer
----@param y2 integer
----@param x3 integer
----@param y3 integer
----@param x4 integer
----@param y4 integer
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@param lineWidth number
 ---@param color table
-function bliz.gl.DrawCustomQuad(id, x1, y1, x2, y2, x3, y3, x4, y4, isFilled, lineWidth, color)
-    local f
-    if(isFilled) then f = 1 else f = 0 end
-    DrawCustomQuad(id, x1, y1, x2, y2, x3, y3, x4, y4, f, lineWidth, color)
+function bliz.gl.DrawLine(x1, y1, x2, y2, lineWidth, color)
+    DrawLine(x1, y1, x2, y2, lineWidth, color)
 end
 
----@param id integer
----@param x1 integer
----@param y1 integer
----@param x2 integer
----@param y2 integer
----@param lineWidth integer
----@param color table
-function bliz.gl.DrawLine(id, x1, y1, x2, y2, lineWidth, color)
-    DrawLine(id, x1, y1, x2, y2, lineWidth, color)
-end
-
----@param id integer
----@param x1 integer
----@param y1 integer
----@param x2 integer
----@param y2 integer
----@param lineWidth integer
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@param lineWidth number
 ---@param segments integer
 ---@param color table
-function bliz.gl.DrawWideLine(id, x1, y1, x2, y2, lineWidth, segments, color)
-    DrawWideLine(id, x1, y1, x2, y2, lineWidth, segments, color)
+function bliz.gl.DrawWideLine(x1, y1, x2, y2, lineWidth, segments, color)
+    DrawWideLine(x1, y1, x2, y2, lineWidth, segments, color)
 end
 
----@param id integer
----@param x1 integer
----@param y1 integer
----@param x2 integer
----@param y2 integer
----@param lineWidth integer
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@param lineWidth number
 ---@param color table
-function bliz.gl.DrawLinePattern(id, x1, y1, x2, y2, lineWidth, color)
-    DrawLinePattern(id, x1, y1, x2, y2, lineWidth, color)
+function bliz.gl.DrawLinePattern(x1, y1, x2, y2, lineWidth, color)
+    DrawLinePattern(x1, y1, x2, y2, lineWidth, color)
 end
 
----@param id integer
----@param x1 integer
----@param y1 integer
----@param x2 integer
----@param y2 integer
----@param lineWidth integer
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@param lineWidth number
 ---@param color table
-function bliz.gl.DrawBezierLineQ(id, x1, y1, x2, y2, lineWidth, color)
-    DrawBezierLineQ(id, x1, y1, x2, y2, lineWidth, color)
+function bliz.gl.DrawBezierLineQ(x1, y1, x2, y2, lineWidth, color)
+    DrawBezierLineQ(x1, y1, x2, y2, lineWidth, color)
 end
 
----@param id integer
----@param x1 integer
----@param y1 integer
----@param x2 integer
----@param y2 integer
----@param lineWidth integer
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@param lineWidth number
 ---@param color table
-function bliz.gl.DrawBezierLineC(id, x1, y1, x2, y2, lineWidth, color)
-    DrawBezierLineC(id, x1, y1, x2, y2, lineWidth, color)
+function bliz.gl.DrawBezierLineC(x1, y1, x2, y2, lineWidth, color)
+    DrawBezierLineC(x1, y1, x2, y2, lineWidth, color)
 end
 
----@param id integer
----@param x1 integer
----@param y1 integer
----@param x2 integer
----@param y2 integer
----@param lineWidth integer
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@param lineWidth number
 ---@param color table
-function bliz.gl.DrawArc(id, x1, y1, x2, y2, lineWidth, color)
-    DrawArc(id, x1, y1, x2, y2, lineWidth, color)
+function bliz.gl.DrawArc(x1, y1, x2, y2, lineWidth, color)
+    DrawArc(x1, y1, x2, y2, lineWidth, color)
 end
 
----@param id integer
----@param x integer
----@param y integer
----@param rx integer
----@param ry integer
+---@param x number
+---@param y number
+---@param rx number
+---@param ry number
 ---@param segments integer
 ---@param filled boolean
----@param lineWidth integer
+---@param lineWidth number
 ---@param color table
-function bliz.gl.DrawEllipse(id, x, y, rx, ry, segments, filled, lineWidth, color)
-    DrawEllipse(id, x, y, rx, ry, segments, filled, lineWidth, color)
+function bliz.gl.DrawEllipse(x, y, rx, ry, segments, filled, lineWidth, color)
+    DrawEllipse(x, y, rx, ry, segments, filled, lineWidth, color)
 end
 
----@param id integer
----@param x integer
----@param y integer
----@param radius integer
+---@param x number
+---@param y number
+---@param radius number
 ---@param segments integer
 ---@param color table
-function bliz.gl.DrawFilledCircle(id, x, y, radius, segments, color)
-    DrawFilledCircle(id, x, y, radius, segments, color)
+function bliz.gl.DrawFilledCircle(x, y, radius, segments, color)
+    DrawFilledCircle(x, y, radius, segments, color)
 end
 
----@param id integer
----@param x integer
----@param y integer
----@param radius integer
+---@param x number
+---@param y number
+---@param radius number
 ---@param segments integer
----@param lineWidth integer
+---@param lineWidth number
 ---@param color table
-function bliz.gl.DrawCircle(id, x, y, radius, segments, lineWidth, isFilled, color)
+function bliz.gl.DrawCircle(x, y, radius, segments, lineWidth, isFilled, color)
     local f
     if(isFilled) then f = 1 else f = 0 end
-    DrawCircle(id, x, y, radius, segments, lineWidth, f, color)
+    DrawCircle(x, y, radius, segments, lineWidth, f, color)
 end
 
 ---@param path string
@@ -517,51 +515,48 @@ function bliz.gl.LoadTexture(path)
 end
 
 ---@param path string
----@param x integer
----@param y integer
----@param width integer
----@param height integer
+---@param x number
+---@param y number
+---@param width number
+---@param height number
 ---@return number
 function bliz.gl.LoadTextureRegion(path, x, y, width, height)
     return LoadTextureRegion(path, x, y, width, height)
 end
 
----@param id number
----@param x integer
----@param y integer
----@param width integer
----@param height integer
-function bliz.gl.BeginClip(id, x, y, width, height)
-    return BeginClip(id, x, y, width, height)
+---@param x number
+---@param y number
+---@param width number
+---@param height number
+function bliz.gl.BeginClip(x, y, width, height)
+    return BeginClip(x, y, width, height)
 end
 
----@param id number
-function bliz.gl.EndClip(id)
-    return EndClip(id)
+function bliz.gl.EndClip()
+    return EndClip()
 end
 
 
----@param id integer
----@param x integer
----@param y integer
----@param width integer
----@param height integer
+---@param x number
+---@param y number
+---@param width number
+---@param height number
 ---@param texID integer
-function bliz.gl.DrawTexture(id, x, y, width, height, texID)
-    DrawTexture(id, x, y, width, height, texID)
+---@param transparency number
+function bliz.gl.DrawTexture(x, y, width, height, texID, transparency)
+    DrawTexture(x, y, width, height, texID, transparency)
 end
 
----@param id integer
----@param x integer
----@param y integer
----@param width integer
----@param height integer
----@param deg integer
----@param anchorX integer
----@param anchorY integer
+---@param x number
+---@param y number
+---@param width number
+---@param height number
+---@param deg number
+---@param anchorX number
+---@param anchorY number
 ---@param texID integer
-function bliz.gl.DrawRotatedTexture(id, x, y, width, height, deg, anchorX, anchorY, texID)
-    DrawRotatedTexture(id, x, y, width, height, deg, anchorX, anchorY, texID)
+function bliz.gl.DrawRotatedTexture(x, y, width, height, deg, anchorX, anchorY, texID)
+    DrawRotatedTexture(x, y, width, height, deg, anchorX, anchorY, texID)
 end
 
 ---@param start integer
@@ -588,11 +583,10 @@ function bliz.gl.ClearDepth(clearValue)
     ClearDepth(clearValue)
 end
 
----@param id integer
 ---@param src integer
 ---@param dst integer
-function bliz.gl.SetBlendMode(id, src, dst)
-    SetBlendMode(id, src, dst)
+function bliz.gl.SetBlendMode(src, dst)
+    SetBlendMode(src, dst)
 end
 
 function bliz.gl.PushMatrix()
@@ -625,14 +619,13 @@ function bliz.gl.Scale(x, y, z)
     Scale(x, y, z)
 end
 
----@param winID integer
 ---@param x integer
 ---@param y integer
 ---@param width integer
 ---@param height integer
 ---@param argHandle integer
-function bliz.gl.BeginRenderTarget(winID, x, y, width, height, argHandle)
-    BeginRenderTarget(winID, x, y, width, height, argHandle)
+function bliz.gl.BeginRenderTarget(x, y, width, height, argHandle)
+    BeginRenderTarget(x, y, width, height, argHandle)
 end
 
 function bliz.gl.EndRenderTarget()
@@ -644,26 +637,24 @@ function bliz.gl.GetRenderTexture(id)
     GetRenderTexture(id)
 end
 
----@param winID integer
 ---@param x number
 ---@param y number
 ---@param width number
 ---@param height number
 ---@param topColor table
 ---@param bottomColor table
-function bliz.gl.DrawVerticalGradient(winID, x, y, width, height, topColor, bottomColor)
-    DrawVerticalGradient(winID, x, y, width, height, topColor, bottomColor)
+function bliz.gl.DrawVerticalGradient(x, y, width, height, topColor, bottomColor)
+    DrawVerticalGradient(x, y, width, height, topColor, bottomColor)
 end
 
----@param winID integer
 ---@param x number
 ---@param y number
 ---@param width number
 ---@param height number
 ---@param leftColor table
 ---@param rightColor table
-function bliz.gl.DrawHorizontalGradient(winID, x, y, width, height, leftColor, rightColor)
-    DrawHorizontalGradient(winID, x, y, width, height, leftColor, rightColor)
+function bliz.gl.DrawHorizontalGradient( x, y, width, height, leftColor, rightColor)
+    DrawHorizontalGradient(x, y, width, height, leftColor, rightColor)
 end
 
 ---@param vertexSrc string
@@ -846,8 +837,35 @@ function bliz.wait(time, func)
 end
 
 ---@param func function
+---@return threadID
 function bliz.createThread(func)
-    createThread(func)
+    return createThread(func)
+end
+
+---@param threadID integer
+---@return boolean
+function bliz.stopThread(threadID)
+    return stopThread(threadID)
+end
+
+---@param threadID integer
+---@param pause boolean
+---@return boolean
+function bliz.pauseThread(threadID, pause)
+    return pauseThread(threadID, pause)
+end
+
+---@param threadID integer
+---@return boolean
+function bliz.isThreadAlive(threadID)
+    return isThreadAlive(threadID)
+end
+
+--- Resume a paused thread (convenience function)
+---@param threadID integer
+---@return boolean
+function bliz.resumeThread(threadID)
+    return pauseThread(threadID, false)
 end
 
 ---@param windowID integer
@@ -1482,6 +1500,27 @@ end
 --- @param func function
 function bliz.UnregisterUpdateCallback(func)
     UnregisterUpdateCallback(func)
+end
+
+--- @param func function
+--- @param phase integer
+function bliz.RegisterDrawCallback(func, phase)
+    RegisterDrawCallback(func, phase)
+end
+
+--- @param func function
+--- @param phase integer
+--- @param before boolean
+function bliz.RegisterDrawCallback(func, phase, before)
+    RegisterDrawCallback(func, phase, before)
+end
+
+--- @param func function
+--- @param phase integer
+--- @param before boolean
+--- @param refcon any
+function bliz.RegisterDrawCallback(func, phase, before, refcon)
+    RegisterDrawCallback(func, phase, before, refcon)
 end
 
 --- @param title string
