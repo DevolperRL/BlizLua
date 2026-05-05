@@ -5,6 +5,7 @@ bliz.al = {}
 bliz.file = {}
 bliz.net = {}
 bliz.math = {}
+bliz.cef = {}
 
 XPLM_NAV_NOT_FOUND = -1
 
@@ -1930,3 +1931,139 @@ end
 function bliz.FailSystem(name, mode)
     FailSystem(name, mode)
 end
+
+---@param id integer
+function bliz.TakeKeyboardFocus(id)
+    TakeKeyboardFocus(id)
+end
+
+function bliz.Active3dCursor()
+    Active3dCursor()
+end
+
+---@param path string
+function bliz.AddSearchPath(path)
+    AddSearchPath(path)
+end
+
+---@param win table
+---@param script string
+---@param params table
+function bliz.AddComponent(win, script, params)
+    AddComponent(win, script, params)
+end
+
+---@param win table
+---@param name string
+function bliz.DestroyComponent(win, name)
+    DestroyComponent(win, name)
+end
+
+---@param script string
+---@param props table
+function bliz.AddPanelComponent(script, props)
+    AddPanelComponent(script, props)
+end
+
+---@param id string
+function bliz.DestroyPanelComponent(id)
+    DestroyPanelComponent(id)
+end
+
+---@param width integer
+---@param height integer
+function bliz.SetPanelSize(width, height)
+    SetPanelSize(width, height)
+end
+
+---DEPRECATED DO NOT USE
+---@param params table Device parameters
+---@return Avionics avionics Created avionics device with methods
+function bliz.CreateAvionics(params)
+    return CreateAvionics(params)
+end
+
+---@param x number
+---@param y number
+---@param width number
+---@param height number
+function bliz.cef.InitializeCEF(x,y,width,height)
+    InitializeCEF(x,y,width,height)
+end
+
+function bliz.cef.DrawCEF()
+    DrawCEF()
+end
+
+function bliz.cef.DrawCEFPanel()
+    DrawCEFPanel()
+end
+
+function bliz.cef.GoBack()
+    GoBack()
+end
+
+function bliz.cef.GoForward()
+    GoForward()
+end
+
+function bliz.cef.Reload()
+    Reload()
+end
+
+---@param code string
+function bliz.cef.ExecuteJavaScript(code)
+    ExecuteJavaScript(code)
+end
+
+function bliz.cef.DestroyCEF()
+    DestroyCEF()
+end
+
+---@param url string
+function bliz.cef.LoadURL(url)
+    LoadURL(url)
+end
+
+---@param x number
+---@param y number
+---@param status integer
+function bliz.cef.MouseClickCEF(x,y,status)
+    MouseClickCEF(x, y, status)
+end
+
+---DONT USE THIS, USE MouseCursorCEF INSTEAD
+---@param x number
+---@param y number
+function bliz.cef.MouseMoveCEF(x, y)
+    MouseMoveCEF(x, y)
+end
+
+---@param x number
+---@param y number
+---@param status integer
+function bliz.cef.MouseWheelCEF(x, y, status)
+    MouseWheelCEF(x, y, status)
+end
+
+---DEPRECATED DONT USE THIS, THIS IS AUTOMATICALLY CALLED BY THE SYSTEM
+---@param key string
+---@param flags integer
+---@param vk integer
+---@param focus boolean
+function bliz.cef.KeysCEF(key, flags, vk, focus)
+    KeysCEF(key, flags, vk, focus)
+end
+
+---@param id integer
+function bliz.cef.SetBrowserWindow(id)
+    SetBrowserWindow(id)
+end
+
+---@param status boolean
+function bliz.cef.SetWindowVisibleCEF(status)
+    SetWindowVisibleCEF(status)
+end
+
+
+
