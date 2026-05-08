@@ -1356,8 +1356,8 @@ end
 
 --- @param obj Object
 --- @return dataref table
-function bliz.InstaceObject(obj, dataref)
-    return InstaceObject(obj, dataref)
+function bliz.InstanceObject(obj, dataref)
+    return InstanceObject(obj, dataref)
 end
 
 --- @param lat number
