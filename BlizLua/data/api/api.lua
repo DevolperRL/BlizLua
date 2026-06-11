@@ -7,6 +7,8 @@ bliz.net = {}
 bliz.math = {}
 bliz.cef = {}
 
+BLIZ_VERSION = 1025
+
 XPLM_NAV_NOT_FOUND = -1
 
 XPLM_NAV_UNKNOW = 0
@@ -693,6 +695,14 @@ function bliz.gl.DisableWireframe()
     DisableWireframe()
 end
 
+---@param x float
+---@param y float
+---@param width float
+---@param height float
+---@param textID integer
+function bliz.gl.DrawTextureFBO(x,y,width,height,textID)
+    DrawTextureFBO(x,y,width,height,textID)
+end
 
 ---@param path_acf string
 function bliz.SetUsersAircraft(path_acf)
@@ -872,7 +882,11 @@ end
 ---@param windowID integer
 ---@param texturePath string
 function bliz.LoadCursorAtlas(windowID, texturePath)
-    LoadCursorAtlas(windowID, texturePath)
+    if BLIZ_VERSION <= 1025 then
+        LoadCursorAtlas(windowID, texturePath)
+    else
+        LogWarning("USING A DEPRECATED FUNCTION, LoadCursorAtlas")
+    end
 end
 
 ---@param windowID integer
@@ -892,7 +906,11 @@ end
 ---@param cursorPosX integer
 ---@param cursorPosY integer
 function bliz.DefineCursor(name, x, y, width, height, cursorPosX, cursorPosY)
-    DefineCursor(name, x, y, width, height, cursorPosX, cursorPosY)
+    if BLIZ_VERSION <= 1025 then
+        DefineCursor(name, x, y, width, height, cursorPosX, cursorPosY)
+    else
+        LogWarning("USING A DEPRECATED FUNCTION, DefineCursor")
+    end
 end
 
 ---@param windowID integer
@@ -909,7 +927,11 @@ end
 ---@param id integer
 ---@param name string
 function bliz.SetActiveCursor(id, name)
-    SetActiveCursor(id, name)
+    if BLIZ_VERSION <= 1025 then
+        SetActiveCursor(id, name)
+    else
+        LogWarning("USING A DEPRECATED FUNCTION, KeyCEF")
+    end
 end
 
 ---@return integer
@@ -2052,7 +2074,11 @@ end
 ---@param vk integer
 ---@param focus boolean
 function bliz.cef.KeysCEF(key, flags, vk, focus)
-    KeysCEF(key, flags, vk, focus)
+    if BLIZ_VERSION <= 1025 then
+       KeysCEF(key, flags, vk, focus) 
+    else
+        LogWarning("USING A DEPRECATED FUNCTION, KeyCEF")
+    end
 end
 
 ---@param id integer
@@ -2065,5 +2091,8 @@ function bliz.cef.SetWindowVisibleCEF(status)
     SetWindowVisibleCEF(status)
 end
 
-
-
+---@param icao string
+---@return table
+function bliz.LoadAirport(icao)
+    return LoadAirport(icao)
+end
