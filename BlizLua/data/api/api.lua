@@ -2096,3 +2096,53 @@ end
 function bliz.LoadAirport(icao)
     return LoadAirport(icao)
 end
+
+---@param x number World X coordinate
+---@param y number World Y coordinate
+---@param z number World Z coordinate
+---@param text string Text to display
+---@param maxDistance number Maximum view distance
+---@param scale number Text scale/size
+---@param colorOptions table Color configuration {bg = {r,g,b,a}, text = {r,g,b,a}}
+---@return integer labelID Unique identifier for the label
+function bliz.CreateWorldLabelDirect(x, y, z, text, maxDistance, scale, colorOptions)
+    return CreateWorldLabelDirect(x, y, z, text, maxDistance, scale, colorOptions)
+end
+
+---@param config table Configuration table with position, width, height, decoration, max_distance, bg, draw_callback
+---@return integer panelID Unique identifier for the panel
+function bliz.CreateWorldCustomLabel(config)
+    return CreateWorldCustomLabel(config)
+end
+
+---@param panelID integer The ID returned by CreateWorldCustomLabel()
+function bliz.RemoveWorldCustomLabel(panelID)
+    RemoveWorldCustomLabel(panelID)
+end
+
+---@param labelID integer The ID returned by CreateWorldLabelDirect()
+function bliz.RemoveWorldLabel(labelID)
+    RemoveWorldLabel(labelID)
+end
+
+---@param labelID integer The ID of the label to update
+---@param newText string The new text to display
+function bliz.UpdateWorldLabelText(labelID, newText)
+    UpdateWorldLabelText(labelID, newText)
+end
+
+---@param panelID integer The ID of the panel to update
+---@param x number New world X coordinate
+---@param y number New world Y coordinate
+---@param z number New world Z coordinate
+function bliz.UpdateCustomWorldLabelPosition(panelID, x, y, z)
+    UpdateCustomWorldLabelPosition(panelID, x, y, z)
+end
+
+---@param labelID integer The ID of the label to update
+---@param x number New world X coordinate
+---@param y number New world Y coordinate
+---@param z number New world Z coordinate
+function bliz.UpdateWorldLabelPosition(labelID, x, y, z)
+    UpdateWorldLabelPosition(labelID, x, y, z)
+end
