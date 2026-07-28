@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --code-bg: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .changelog-entry {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 0.5rem;
+        }
+
+        .changelog-entry h2 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .changelog-entry ul {
+            padding-left: 1.5rem;
+        }
+
+        .changelog-entry li {
+            margin-bottom: 0.5rem;
+        }
+
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Changelog</h1>
+
+        <div class="changelog-entry">
+        <h2>Version 1.0 B2.6 - July 25, 2026</h2>
+        <ul>
+            <li>Added image to imgui</li>
+            <li>Added CreateWorldLabelDirect</li>
+            <li>Added CreateWorldCustomLabel</li>
+            <li>Added RemoveWorldCustomLabel</li>
+            <li>Added RemoveWorldLabel</li>
+            <li>Added UpdateWorldLabelText</li>
+            <li>Added UpdateCustomWorldLabelPosition</li>
+            <li>Added UpdateWorldLabelPosition</li>
+        </ul>
+        </div>
+        
+        <div class="changelog-entry">
+        <h2>Version 1.0 B2.5 - June 11, 2026</h2>
+        <ul>
+            <li>Added Pixel effect (only to Panels)</li>
+            <li>Added LoadAirport</li>
+            <li>Added DrawTextureFBO</li>
+            <li>Added cursor to components</li>
+            <li>Added cursor to panel components</li>
+            <li>Fixed Crash when using shader</li>
+            <li>Fixed FBO not drawing</li>
+            <li>Fixed bug when using DrawTexture</li>
+            <li>Fixed opening scripts bug</li>
+            <li>Deprecated SetActiveCursor</li>
+            <li>Deprecated LoadCursorAtlas</li>
+            <li>Deprecated DefineCursor</li>
+            <li>Changed name from component to children</li>
+        </ul>
+        </div>
+
+        <div class="changelog-entry">
+        <h2>Version 1.0 B2.4 - May 14, 2026</h2>
+        <ul>
+            <li>Added DEBUG_WIN, a new option to hide or show Debug Window in config.cfg</li>
+        </ul>
+        </div>
+
+        <div class="changelog-entry">
+        <h2>Version 1.0 B2.3 - May 13, 2026</h2>
+        <ul>
+            <li>Fixed Grammar</li>
+        </ul>
+        </div>
+
+        <div class="changelog-entry">
+        <h2>Version 1.0 B2.2 - May 10, 2026</h2>
+        <ul>
+            <li>Fixed Crash when reloading</li>
+        </ul>
+        </div>
+
+        <div class="changelog-entry">
+        <h2>Version 1.0 B2.1 - May 08, 2026</h2>
+        <ul>
+            <li>Fixed Grammar on some functions</li>
+            <li>Fixed Version problem (didn't match with current version)</li>
+        </ul>
+        </div>
+
+        <div class="changelog-entry">
+        <h2>Version 1.0 B2 - May 08, 2026</h2>
+        <ul>
+            <li>Change Log system</li>
+            <li>Changed Bliz Premium System</li>
+            <li>Added CEF</li>
+            <li>Added Code editor</li>
+            <li>Added Components</li>
+            <li>Added TakeKeyboardFocus</li>
+            <li>Added Active3dCursor</li>
+            <li>Added AddSearchPath</li>
+            <li>Added AddComponent</li>
+            <li>Added DestroyComponent</li>
+            <li>Added AddPanelComponent</li>
+            <li>Added DestroyPanelComponent</li>
+            <li>Added SetPanelSize</li>
+            <li>Added CreateAvionics</li>
+            <li>Added InitializeCEF</li>
+            <li>Added DrawCEF</li>
+            <li>Added DrawCEFPanel</li>
+            <li>Added GoBack</li>
+            <li>Added GoForward</li>
+            <li>Added Reload</li>
+            <li>Added ExecuteJavaScript</li>
+            <li>Added DestroyCEF</li>
+            <li>Added LoadURL</li>
+            <li>Added MouseClickCEF</li>
+            <li>Added MouseMoveCEF</li>
+            <li>Added MouseWheelCEF</li>
+            <li>Added KeysCEF</li>
+            <li>Added SetBrowserWindow</li>
+            <li>Added SetWindowVisibleCEF</li>
+        </ul>
+        </div>
+
+        <div class="changelog-entry">
+        <h2>Version 1.0 B1 - June 21, 2025</h2>
+        <ul>
+            <li>Fixed createThread crashing</li>
+            <li>Fixed openGL bugs</li>
+            <li>Change draw system</li>
+            <li>Added isThreadAlive</li>
+            <li>Added pauseThread</li>
+            <li>Added stopThread</li>
+            <li>Added resumeThread</li>
+            <li>Added Bliz Premium</li>
+            <li>Added RegisterDrawCallback</li>
+            <li>Added Imgui</li>
+            <li>Added CreateImGuiWindow</li>
+            <li>Added Imgui:Text</li>
+            <li>Added Imgui:Button</li>
+            <li>Added Imgui:Checkbox</li>
+            <li>Added Imgui:SliderFloat</li>
+            <li>Added Imgui:SliderInt</li>
+            <li>Added Imgui:Separator</li>
+            <li>Added Imgui:SameLine</li>
+            <li>Added Imgui:GetWindowWidth</li>
+            <li>Added Imgui:GetWindowHeight</li>
+            <li>Added Imgui:NewLine</li>
+            <li>Added Imgui:Spacing</li>
+            <li>Added Imgui:Dummy</li>
+            <li>Added Imgui:SetNextItemWidth</li>
+            <li>Added Imgui:SetCursorPos</li>
+            <li>Added Imgui:InputText</li>
+            <li>Added Imgui:InputTextMultiline</li>
+            <li>Added Imgui:InputFloat</li>
+            <li>Added Imgui:InputInt</li>
+            <li>Added Imgui:InputDouble</li>
+            <li>Added Imgui:Combo</li>
+            <li>Added Imgui:ListBox</li>
+            <li>Added Imgui:ColorEdit3</li>
+            <li>Added Imgui:ColorEdit4</li>
+            <li>Added Imgui:ColorPicker3</li>
+            <li>Added Imgui:ColorPicker4</li>
+            <li>Added Imgui:CollapsingHeader</li>
+            <li>Added Imgui:TreeNode</li>
+            <li>Added Imgui:TreePop</li>
+            <li>Added Imgui:BeginTable</li>
+            <li>Added Imgui:EndTable</li>
+            <li>Added Imgui:TableNextRow</li>
+            <li>Added Imgui:TableNextColumn</li>
+            <li>Added Imgui:TableSetColumnIndex</li>
+            <li>Added Imgui:BeginMenuBar</li>
+            <li>Added Imgui:EndMenuBar</li>
+            <li>Added Imgui:BeginMenu</li>
+            <li>Added Imgui:EndMenu</li>
+            <li>Added Imgui:MenuItem</li>
+            <li>Added Imgui:BeginTooltip</li>
+            <li>Added Imgui:EndTooltip</li>
+            <li>Added Imgui:BeginPopup</li>
+            <li>Added Imgui:EndPopup</li>
+            <li>Added Imgui:OpenPopup</li>
+            <li>Added Imgui:CloseCurrentPopup</li>
+            <li>Added Imgui:BeginGroup</li>
+            <li>Added Imgui:EndGroup</li>
+            <li>Added Imgui:Indent</li>
+            <li>Added Imgui:Unindent</li>
+            <li>Added Imgui:GetCursorPos</li>
+            <li>Added Imgui:GetCursorScreenPos</li>
+            <li>Added Imgui:ProgressBar</li>
+            <li>Added Imgui:PlotLines</li>
+            <li>Added Imgui:PlotHistogram</li>
+            <li>Added Imgui:TextColored</li>
+            <li>Added Imgui:TextWrapped</li>
+            <li>Added Imgui:TextDisabled</li>
+            <li>Added Imgui:BulletText</li>
+            <li>Added Imgui:LabelText</li>
+            <li>Added Imgui:ArrowButton</li>
+            <li>Added Imgui:Selectable</li>
+            <li>Added Imgui:RadioButton</li>
+            <li>Added Imgui:DragFloat</li>
+            <li>Added Imgui:DragInt</li>
+            <li>Added Imgui:DragFloatRange2</li>
+            <li>Added Imgui:DragIntRange2</li>
+            <li>Added Imgui:Image</li>
+            <li>Added Imgui:ImageButton</li>
+            <li>Added Imgui:SetScrollHereY</li>
+            <li>Added Imgui:SetKeyboardFocusHere</li>
+            <li>Added Imgui:IsItemHovered</li>
+            <li>Added Imgui:IsItemClicked</li>
+            <li>Added Imgui:IsItemActive</li>
+            <li>Added Imgui:Columns</li>
+            <li>Added Imgui:NextColumn</li>
+        </ul>
+        </div>
+
+        <div class="changelog-entry">
+        <h2>Version 0.3 (Beta) - June 21, 2025</h2>
+            <ul>
+                <li>Fixed \n bug </li>
+                <li>Added CreateOwnManip</li>
+                <li>Added clamp</li>
+                <li>Added lerp</li>
+                <li>Added inverseLerp</li>
+                <li>Added remap</li>
+                <li>Added wrap</li>
+                <li>Added sign</li>
+                <li>Added vec2Length</li>
+                <li>Added vec3Length</li>
+                <li>Added vec2Normalize</li>
+                <li>Added vec3Normalize</li>
+                <li>Added vec2Dot</li>
+                <li>Added vec3Dot</li>
+                <li>Added vec3Cross</li>
+                <li>Added vec2Angle</li>
+                <li>Added vec3Angle</li>
+                <li>Added vec3Project</li>
+                <li>Added distance2D</li>
+                <li>Added distance3D</li>
+                <li>Added midpoint</li>
+                <li>Added lineIntersection2D</li>
+                <li>Added pointInTriangle</li>
+                <li>Added rotatePoint</li>
+                <li>Added headingToVector</li>
+                <li>Added vectorToHeading</li>
+                <li>Added normalizeHeading</li>
+                <li>Added headingDifference</li>
+                <li>Added latLonBearing</li>
+                <li>Added moveLatLon</li>
+                <li>Added airspeedToMach</li>
+                <li>Added machToAirspeed</li>
+                <li>Added feetToMeters</li>
+                <li>Added metersToFeet</li>
+                <li>Added knotsToMps</li>
+                <li>Added mpsToKnots</li>
+                <li>Added perlinNoise2D</li>
+                <li>Added perlinNoise3D</li>
+                <li>Added smoothNoise</li>
+                <li>Added smoothStep</li>
+                <li>Added bezier2D</li>
+                <li>Added bezier3D</li>
+                <li>Added catmullRomSpline</li>
+                <li>Added mat4Identity</li>
+                <li>Added mat4Translate</li>
+                <li>Added mat4RotateX</li>
+                <li>Added mat4RotateY</li>
+                <li>Added mat4RotateZ</li>
+                <li>Added mat4Scale</li>
+                <li>Added mat4Multiply</li>
+                <li>Added transformPoint</li>
+                <li>Added solveQuadratic</li>
+                <li>Added solveCubic</li>
+                <li>Added factorial</li>
+                <li>Added binomialCoefficient</li>
+                <li>Added gamma</li>
+                <li>Added erf</li>
+                <li>Added ShiftLeft</li>
+                <li>Added ShiftRight</li>
+                <li>Added BitAnd</li>
+                <li>Added BitOr</li>
+                <li>Added BitXor</li>
+                <li>Added BitNot</li>
+                <li>Added EnableFog</li>
+                <li>Added DisableFog</li>   
+                <li>Added EnableFog</li>
+                <li>Added DisableFog</li>
+                <li>Added EnableDepth</li>
+                <li>Added DisableDepth</li>
+                <li>Added ClearDepth</li>
+                <li>Added SetBlendMode</li>
+                <li>Added PushMatrix</li>
+                <li>Added PopMatrix</li>
+                <li>Added Translate</li>
+                <li>Added Rotate</li>
+                <li>Added Scale</li>
+                <li>Added BeginRenderTarget</li>
+                <li>Added EndRenderTarget</li>
+                <li>Added GetRenderTexture</li>
+                <li>Added DrawVerticalGradient</li>
+                <li>Added DrawHorizontalGradient</li>
+                <li>Added LoadShader</li>
+                <li>Added UseShader</li>
+                <li>Added SetShaderUniform</li>
+                <li>Added EnableCull</li>
+                <li>Added DisableCull</li>
+                <li>Added EnableWireframe</li>
+                <li>Added DisableWireframe</li>
+                <li>Added FailSystem</li>
+                <li>Added Crypt scrpits system (only avaible in DMs)</li>
+            </ul>
+        </div>
+
+        <div class="changelog-entry">
+            <h2>Version 0.2 (Beta) - June 21, 2025</h2>
+            <ul>
+                <li>Added function OnClosing()</li>
+                <li>Added SetPlaybackOffset</li>
+                <li>Added GetPlaybackOffset</li>
+                <li>Added GetSoundDuration</li>
+                <li>Added ResumeSound</li>
+                <li>Added PauseSound</li>
+                <li>Added StopSound</li>
+                <li>Added Playsound</li>
+                <li>Added LoadSound</li>
+                <li>Added BeginClip</li>
+                <li>Added EndClip</li>
+                <li>Added LoadTextureRegion</li>
+                <li>Added DrawRotatedTexture</li>
+                <li>Added SetClipboardText</li>
+                <li>Added UnregisterUpdateCallback</li>
+                <li>Added RegisterUpdateCallback</li>
+                <li>Added CreateNotification</li>
+                <li>Added CreateYesNoWarning</li>
+                <li>Added CreateWarning</li>
+                <li>Added DownloadFileFromURL</li>
+                <li>Added DrawWideLine</li>
+                <li>Added DrawLinePattern</li>
+                <li>Added DrawBezierLineQ</li>
+                <li>Added DrawBezierLineC</li>
+                <li>Added DrawArc</li>
+            </ul>
+        </div>
+
+        <div class="changelog-entry">
+            <h2>Version 0.1 (Beta) - April 02, 2025</h2>
+            <ul>
+                <li>Fixed bug</li>
+            </ul>
+        </div>
+        <a href="#" class="back-to-top">⬆ Back to top</a>
+    </div>
+
+</body>
+</html>
